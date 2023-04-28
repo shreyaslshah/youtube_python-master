@@ -1,0 +1,26 @@
+{% extends "parent.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block body %}
+<h1>VIDEO SHARING WEBSITE</h1><br>
+<br>
+<div class="video-container">
+
+{% for video in most_recent_videos %}
+  <div class="video-card">
+    <div class="video-content">
+
+    <h1 class="video-title">{{ video.title }}</h1>
+    <p class="video-desc">{{ video.description }}</p>
+    <p class="video-uploaded">Uploaded by {{ video.user }} on {{ video.datetime }} </p>
+    <p class="video-watch"><a href='/video/{{ video.id }}'>Watch Video</a></p>
+  </div>
+</div>
+{% endfor %}
+
+</div>
+
+{% endblock %}

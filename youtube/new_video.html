@@ -1,0 +1,17 @@
+{% extends "parent.html" %} {% load crispy_forms_tags %} {% block title %}
+Upload Video {% endblock %} {% block body %}
+
+<form action="new_video" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col-6">{{ form.title|as_crispy_field }}</div>
+  </div>
+  <div class="row">
+    <div class="col-6">{{ form.description|as_crispy_field }}</div>
+  </div>
+  <div class="">{{ form.file }}</div>
+  <div class="">
+    <button type="submit" class="btn btn-danger mt-4">Upload Video</button>
+  </div>
+</form>
+{% endblock %}

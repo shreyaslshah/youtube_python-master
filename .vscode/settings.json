@@ -1,0 +1,7 @@
+{
+    "python.pythonPath": "C:\\Users\\andre\\Anaconda3\\python.exe",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.formatting.provider": "none"
+}

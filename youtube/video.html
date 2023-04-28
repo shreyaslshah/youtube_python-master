@@ -1,0 +1,43 @@
+{% extends "parent.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Video - 
+{% endblock %}
+
+
+{% block body %}
+
+<h2>{{ video.title }}</h2>
+<div class="mx-auto d-flex justify-center">
+<video width="800" height="600" controls class="mx-auto">
+    <source src="{{ video.path }}" type="video/mp4">
+  Your browser does not support the video tag.
+  </video>
+</div>
+  <div style="width: 800px;  margin: auto; margin-top: 50px;">
+    <h3>Description</h3>
+    <p>{{ video.description }}</p>
+    <h3>Comments</h3>
+
+    {% if form %}
+    <form action="/comment" method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type='hidden' name='video' value='{{ video.id }}'>
+        <br>
+        <button type="submit" class="btn btn-danger my-4">Post Comment!</button>
+    </form>
+    {% endif %}
+    
+    {% for comment in comments %}
+    <p>
+    {{ comment.user }} posted on: {{ comment.datetime }} <br>
+    {{ comment.text }}
+    </p>
+    {% endfor %}
+    
+  </div>
+
+
+{% endblock %}
